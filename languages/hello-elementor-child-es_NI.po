@@ -1,0 +1,101 @@
+msgid ""
+msgstr "Project-Id-Version: Hello Elementor Child 2.0.8\\nReport-Msgid-Bugs-To: \\nPOT-Creation-Date: 2026-05-04 12:23+0000\\nPO-Revision-Date: 2026-05-04 12:23+0000\\nLast-Translator: Fullcom <info@example.com>\\nLanguage-Team: Spanish\\nMIME-Version: 1.0\\nContent-Type: text/plain; charset=UTF-8\\nContent-Transfer-Encoding: 8bit\\nX-Generator: ChatGPT\\nLanguage: es_NI\\nPlural-Forms: nplurals=2; plural=(n != 1);\\n"
+
+msgid "[%s] Reset password"
+msgstr "[%s] Restablecer contraseña"
+
+msgid "Hello,\n\nWe received a request to reset the password for your account on %s."
+msgstr "Hola,\n\nRecibimos una solicitud para restablecer la contraseña de tu cuenta en %s."
+
+msgid "To create a new password, open this link:"
+msgstr "Para crear una nueva contraseña, abre este enlace:"
+
+msgid "If you did not request this change, you can ignore this email."
+msgstr "Si no solicitaste este cambio, puedes ignorar este correo."
+
+msgid "The recovery email could not be sent. Please try again later."
+msgstr "No se pudo enviar el correo de recuperación. Intenta nuevamente más tarde."
+
+msgid "You have been logged out successfully."
+msgstr "Sesión cerrada correctamente."
+
+msgid "The session expired. Reload the page and try again."
+msgstr "La sesión expiró. Recarga la página e intenta nuevamente."
+
+msgid "Enter your username or email address."
+msgstr "Ingresa tu usuario o correo electrónico."
+
+msgid "If the user exists, you will receive an email with instructions to reset the password."
+msgstr "Si el usuario existe, recibirás un correo con las instrucciones para restablecer la contraseña."
+
+msgid "The session expired. Request a new password reset."
+msgstr "La sesión expiró. Solicita nuevamente el cambio de contraseña."
+
+msgid "Enter and confirm your new password."
+msgstr "Ingresa y confirma tu nueva contraseña."
+
+msgid "The passwords do not match."
+msgstr "Las contraseñas no coinciden."
+
+msgid "The recovery link is invalid or has expired."
+msgstr "El enlace de recuperación no es válido o ya expiró."
+
+msgid "Your password has been updated successfully. You can now sign in."
+msgstr "Tu contraseña fue actualizada correctamente. Ya puedes ingresar."
+
+msgid "Enter your username and password."
+msgstr "Ingresa tu usuario y contraseña."
+
+msgid "Admin panel"
+msgstr "Panel de administración"
+
+msgid "Admin panel access"
+msgstr "Acceso al panel de administración"
+
+msgid "Back to website"
+msgstr "Volver al sitio web"
+
+msgid "Private and secure access"
+msgstr "Acceso privado y seguro"
+
+msgid "Enter your username or email address and we will send you a link to reset your password."
+msgstr "Ingresa tu usuario o correo electrónico y te enviaremos un enlace para restablecer tu contraseña."
+
+msgid "Username or email address"
+msgstr "Usuario o correo electrónico"
+
+msgid "Send recovery link"
+msgstr "Enviar enlace de recuperación"
+
+msgid "Back to login"
+msgstr "Volver al inicio de sesión"
+
+msgid "Create a new password for your account."
+msgstr "Crea una nueva contraseña para tu cuenta."
+
+msgid "New password"
+msgstr "Nueva contraseña"
+
+msgid "Confirm password"
+msgstr "Confirmar contraseña"
+
+msgid "Save new password"
+msgstr "Guardar nueva contraseña"
+
+msgid "Password"
+msgstr "Contraseña"
+
+msgid "Remember me"
+msgstr "Recordarme"
+
+msgid "Forgot password"
+msgstr "Olvidé mi contraseña"
+
+msgid "Sign in to panel"
+msgstr "Ingresar al panel"
+
+msgid "Secure access to %s"
+msgstr "Accede de forma segura a %s"
+
+msgid "Back to top"
+msgstr "Volver arriba"

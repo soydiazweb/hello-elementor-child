@@ -1,0 +1,101 @@
+msgid ""
+msgstr "Project-Id-Version: Hello Elementor Child 2.0.8\\nReport-Msgid-Bugs-To: \\nPOT-Creation-Date: 2026-05-04 12:23+0000\\nPO-Revision-Date: 2026-05-04 12:23+0000\\nLast-Translator: Fullcom <info@example.com>\\nLanguage-Team: Spanish\\nMIME-Version: 1.0\\nContent-Type: text/plain; charset=UTF-8\\nContent-Transfer-Encoding: 8bit\\nX-Generator: ChatGPT\\n"
+
+msgid "[%s] Reset password"
+msgstr ""
+
+msgid "Hello,\n\nWe received a request to reset the password for your account on %s."
+msgstr ""
+
+msgid "To create a new password, open this link:"
+msgstr ""
+
+msgid "If you did not request this change, you can ignore this email."
+msgstr ""
+
+msgid "The recovery email could not be sent. Please try again later."
+msgstr ""
+
+msgid "You have been logged out successfully."
+msgstr ""
+
+msgid "The session expired. Reload the page and try again."
+msgstr ""
+
+msgid "Enter your username or email address."
+msgstr ""
+
+msgid "If the user exists, you will receive an email with instructions to reset the password."
+msgstr ""
+
+msgid "The session expired. Request a new password reset."
+msgstr ""
+
+msgid "Enter and confirm your new password."
+msgstr ""
+
+msgid "The passwords do not match."
+msgstr ""
+
+msgid "The recovery link is invalid or has expired."
+msgstr ""
+
+msgid "Your password has been updated successfully. You can now sign in."
+msgstr ""
+
+msgid "Enter your username and password."
+msgstr ""
+
+msgid "Admin panel"
+msgstr ""
+
+msgid "Admin panel access"
+msgstr ""
+
+msgid "Back to website"
+msgstr ""
+
+msgid "Private and secure access"
+msgstr ""
+
+msgid "Enter your username or email address and we will send you a link to reset your password."
+msgstr ""
+
+msgid "Username or email address"
+msgstr ""
+
+msgid "Send recovery link"
+msgstr ""
+
+msgid "Back to login"
+msgstr ""
+
+msgid "Create a new password for your account."
+msgstr ""
+
+msgid "New password"
+msgstr ""
+
+msgid "Confirm password"
+msgstr ""
+
+msgid "Save new password"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Remember me"
+msgstr ""
+
+msgid "Forgot password"
+msgstr ""
+
+msgid "Sign in to panel"
+msgstr ""
+
+msgid "Secure access to %s"
+msgstr ""
+
+msgid "Back to top"
+msgstr ""

@@ -1,0 +1,95 @@
+=== Hello Elementor Child personalizado ===
+
+Contributors: solucionweb
+Requires at least: 5.9
+Tested up to: 6.5
+Stable tag: 2.4.0
+Version: 2.4.0
+Requires PHP: 7.4
+License: GNU General Public License v3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Tags: elementor, child-theme, custom-login, translation-ready
+
+Tema hijo personalizado para Hello Elementor con login privado, reglas de acceso, botón Back to Top, botón flotante de WhatsApp, shortcodes básicos y opciones administrables desde Apariencia > Opciones del tema.
+
+== Funcionalidades ==
+
+* Acceso privado en /panel/admin/.
+* Bloqueo de /wp-login.php y /wp-admin/ para usuarios anónimos.
+* Redirección de 404 a la URL de contacto/respaldo configurada.
+* Botón global Back to Top con icono, texto, colores y tamaño administrables.
+* Botón flotante de WhatsApp con número, tamaño, texto accesible y mensaje administrables.
+* Icono fijo de WhatsApp desde assets/img/whatsapp.svg.
+* Shortcode [powerby] con año actual, texto y enlace configurables.
+* Shortcode [back] con icono, texto y URL fallback configurables.
+* Traducciones visuales administrables por pestañas de idioma.
+* Pantalla administrativa modernizada con textos de ayuda en español.
+
+== Opciones del tema ==
+
+La configuración está en:
+
+Apariencia > Opciones del tema
+
+Desde ahí se administra:
+
+* Back to Top: activación, icono, texto accesible, tamaño, color de fondo, color del icono, color del borde y color hover.
+* WhatsApp: activación, número, tamaño, texto accesible y mensaje inicial.
+* Back shortcode: icono, texto y URL de respaldo.
+* Powerby shortcode: texto, URL, texto del enlace y apertura en nueva pestaña.
+* Login y redirecciones: título, subtítulo, texto de regreso y URL de contacto.
+* Idiomas: textos administrables organizados por pestañas.
+
+== WhatsApp ==
+
+El botón flotante se configura desde Apariencia > Opciones del tema. Para activarlo, marca Mostrar botón e ingresa el número en formato internacional, sin espacios ni signo +. Ejemplo: 50255555555.
+
+El icono no es editable desde la administración. El tema usa siempre el vector fijo incluido en assets/img/whatsapp.svg.
+
+El botón se muestra arriba de Back to Top cuando ambos están activos y siempre conserva forma circular. Desde opciones solo se administra su tamaño, texto accesible y mensaje inicial.
+
+== Idiomas y traducciones ==
+
+Los textos visuales se administran desde Apariencia > Opciones del tema > Idiomas. La sección usa pestañas para separar Español, Inglés, Francés, Italiano, Portugués y Alemán.
+
+Los campos generales funcionan como respaldo. Si un campo de idioma está vacío, el tema usa el texto general.
+
+Para textos técnicos que no están en la pantalla de opciones, usa los archivos .po/.mo dentro de /languages/ o un plugin como Loco Translate.
+
+== Shortcodes ==
+
+= [powerby] =
+
+Muestra el año actual y un enlace configurable.
+
+Ejemplos:
+
+[powerby]
+[powerby text="Solución Web"]
+[powerby label="Desarrollado por" text="fullcom" url="https://fullcom.ec"]
+
+= [back] =
+
+Muestra un botón para regresar a la página anterior del navegador. Si no existe historial, usa una URL fallback.
+
+Ejemplos:
+
+[back]
+[back text="Volver"]
+[back icon="‹" fallback="/contacto/"]
+
+== Limpieza de archivos ==
+
+El tema incluye .gitignore y .distignore para evitar archivos basura de macOS, Windows, editores y paquetes generados. Esto ayuda a que no se suban nuevamente archivos como __MACOSX, .DS_Store, ._*, Thumbs.db, Desktop.ini, temporales o logs.
+
+== Instalación ==
+
+1. Subir el ZIP desde Apariencia > Temas > Añadir nuevo > Subir tema.
+2. Activar el tema hijo.
+3. Ir a Apariencia > Opciones del tema.
+4. Configurar textos, colores, tamaños, WhatsApp, shortcodes e idiomas.
+5. Guardar enlaces permanentes si /panel/admin/ no responde después de actualizar archivos.
+
+== Mantenimiento ==
+
+No agregar lógica directamente en functions.php. Para nuevas funcionalidades, crear un módulo dentro de inc/. Los estilos deben ir en assets/css/, los scripts en assets/js/ y los recursos visuales en assets/img/.

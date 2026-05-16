@@ -1,0 +1,69 @@
+/**
+ * Shortcodes styles.
+ */
+
+.sw-powered-by {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.28rem;
+	font-size: 0.875rem;
+	line-height: 1.4;
+	color: #6b7280;
+}
+
+.sw-powered-by__link {
+	color: #374151;
+	font-weight: 500;
+	text-decoration: none;
+	transition: color 180ms ease, text-decoration-color 180ms ease;
+}
+
+.sw-powered-by__link:hover,
+.sw-powered-by__link:focus {
+	color: #111827;
+	text-decoration: underline;
+	text-underline-offset: 0.18em;
+}
+
+.sw-back-button {
+	appearance: none;
+	-webkit-appearance: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.45rem;
+	min-height: 42px;
+	padding: 0.7rem 1.15rem;
+	border: 1px solid rgba(17, 24, 39, 0.14);
+	border-radius: 999px;
+	background: #f5f5f7;
+	color: #1d1d1f;
+	font-size: 0.95rem;
+	font-weight: 500;
+	line-height: 1;
+	text-decoration: none;
+	cursor: pointer;
+	box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+	transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.sw-back-button:hover,
+.sw-back-button:focus {
+	background: #ffffff;
+	border-color: rgba(17, 24, 39, 0.24);
+	box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+	transform: translateY(-1px);
+}
+
+.sw-back-button:focus-visible {
+	outline: 2px solid #6b7280;
+	outline-offset: 3px;
+}
+
+.sw-back-button__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.05em;
+	line-height: 1;
+}
