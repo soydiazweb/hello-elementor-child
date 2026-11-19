@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'HELLO_ELEMENTOR_CHILD_VERSION', '2.6.0' );
+define( 'HELLO_ELEMENTOR_CHILD_VERSION', '2.6.1' );
 define( 'HELLO_ELEMENTOR_CHILD_LOGIN_SLUG', 'panel/admin' );
 define( 'HELLO_ELEMENTOR_CHILD_REWRITE_VERSION', '20260516-1' );
 

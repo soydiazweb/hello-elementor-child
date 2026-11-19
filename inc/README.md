@@ -14,7 +14,12 @@ Esta carpeta contiene la lógica PHP del tema hijo. `functions.php` solo define 
 - `whatsapp-button.php`: botón flotante global de WhatsApp, colocado arriba de Back to Top cuando ambos están activos; su número, mensaje y tamaño se administran desde opciones del tema. El icono no es administrable y usa `assets/img/whatsapp.svg`.
 - `shortcodes.php`: registra únicamente `[powerby]` y `[back]`.
 - `agente.php`: arranca el agente de Solución Web, que le reporta al Panel Kinsta quién tiene acceso de administrador y enciende la verificación en dos pasos por correo. Se aparta solo si el plugin suelto *Agente Solución Web* sigue instalado en el sitio.
-- `agente/`: las clases del agente. Doce de los trece archivos son **copia exacta** del plugin `agente-sitio`, para poder traer una corrección sin tocarlos. El único que cambia es `agente/class-admin.php`, que dibuja la pantalla **Apariencia > Conexión al panel** con el diseño de este tema en vez del aspecto suelto de WordPress.
+- `agente/`: las clases del agente. La mayoría son **copia exacta** del plugin `agente-sitio`, para poder traer una corrección sin tocarlas. A fecha de 2.6.1 son cuatro las que difieren, y conviene saber cuáles antes de copiar nada encima:
+  - `class-admin.php`: dibuja **Apariencia > Conexión al panel** con el diseño de este tema y en cuatro pestañas, en vez del aspecto suelto de WordPress.
+  - `class-ajustes.php`: añade el ajuste `panel_activo`, que no existe en el plugin.
+  - `class-ordenes.php` y `class-reporte.php`: se niegan a programar sus relojes cuando `panel_activo` está apagado.
+
+  El interruptor es propio del tema a propósito: el plugin se instala sabiendo que el sitio está en ese servidor, y el tema se usa en sitios que no lo están.
 
 ## Recursos visuales
 

@@ -40,6 +40,21 @@ hello-theme-child/
 │       └── login.js
 ├── inc/
 │   ├── access-rules.php
+│   ├── agente.php
+│   ├── agente/
+│   │   ├── class-admin.php
+│   │   ├── class-ajustes.php
+│   │   ├── class-correo.php
+│   │   ├── class-dos-factores.php
+│   │   ├── class-firma.php
+│   │   ├── class-fondo.php
+│   │   ├── class-formularios.php
+│   │   ├── class-normas.php
+│   │   ├── class-ordenes.php
+│   │   ├── class-reporte.php
+│   │   ├── class-silencio.php
+│   │   ├── class-tienda.php
+│   │   └── class-vigilante.php
 │   ├── assets.php
 │   ├── back-to-top.php
 │   ├── custom-login.php
@@ -72,6 +87,46 @@ Desde ahí se administra:
 - **Seguridad antispam de formularios:** bloqueo de palabras spam, bloqueo de URLs fuera de campos enlace, bloqueo de fragmentos maliciosos e IPs bloqueadas.
 - **Login y redirecciones:** título, subtítulo, texto de regreso y URL de contacto/respaldo.
 - **Idiomas:** traducciones administrables por pestañas.
+
+## Conexión al panel
+
+El tema trae dentro el **agente de Solución Web**: no hay nada que instalar
+aparte. Su pantalla está en:
+
+```text
+Apariencia > Conexión al panel
+```
+
+Desde la versión 2.6.1 son cuatro pestañas:
+
+- **Conexión** — la dirección del panel, la clave de registro y el interruptor
+  de reporte. Al registrar el sitio, el agente manda su primer reporte en ese
+  momento; no hay que esperar al del día siguiente.
+- **Correo** — comprueba que el sitio puede enviar correo. Hay que hacerlo
+  antes de encender los dos pasos: si el correo no sale, el código no llega y
+  los administradores se quedan fuera.
+- **Dos pasos** — pide un código por correo al entrar, además de la contraseña.
+- **Códigos de respaldo** — para entrar si se pierde el acceso al correo.
+
+### Apagar el reporte
+
+La casilla **«Este sitio le reporta al Panel Kinsta»**, en la pestaña de
+Conexión, se apaga en los sitios que no están en ese servidor. Apagada:
+
+- no sale el reporte diario ni se pregunta si hay algo pendiente;
+- se quitan los dos eventos programados, no solo se deja de enviar;
+- **el resto del tema no cambia**: el código por correo al entrar y el silencio
+  de los avisos automáticos de WordPress siguen funcionando igual.
+
+### Qué manda, y cuándo
+
+Una vez al día, a las 05:00, con un desfase fijo que sale del propio dominio
+para que muchos sitios no llamen al panel en el mismo minuto. Manda quién tiene
+acceso de administrador y cómo está el sitio respecto a las normas de
+seguridad. Si hace falta antes, hay un botón para mandarlo en el momento.
+
+El sitio **nunca abre una puerta hacia afuera**: es el sitio el que llama al
+panel, nunca al revés.
 
 ## Botón flotante de WhatsApp
 
@@ -284,6 +339,28 @@ Desktop.ini
 - Colocar JavaScript en `assets/js/`.
 - Mantener recursos visuales, como SVG o imágenes, en `assets/img/`.
 - Actualizar la versión en `functions.php`, `style.css` y `readme.txt` cuando haya cambios.
+
+## Cambios en 2.6.1 (2026-11-19)
+
+- **Apariencia > Conexión al panel** pasa a cuatro pestañas —Conexión, Correo,
+  Dos pasos y Códigos de respaldo— en vez de cuatro bloques en una sola página.
+- Nueva casilla **«Este sitio le reporta al Panel Kinsta»**. Apagada, el sitio
+  deja de reportar y se quitan sus dos eventos programados; el código por
+  correo y el silencio de los avisos de WordPress siguen funcionando.
+- Al registrar el sitio, el agente manda su **primer reporte en ese momento**.
+  Antes solo pedía el token y el panel no sabía nada del sitio hasta el día
+  siguiente. Si ese envío falla, el registro no se deshace.
+
+## Cambios en 2.6.0 (2026-11-18)
+
+- El **agente de Solución Web** vive dentro del tema (`inc/agente.php` y
+  `inc/agente/`). No hace falta instalar el plugin suelto.
+- Si el plugin *Agente Solución Web* sigue instalado en el sitio, manda el
+  plugin y el tema se aparta: no se duplica nada.
+- Pantalla **Apariencia > Conexión al panel**, con el diseño de este tema.
+- Corregida la verificación en dos pasos en los sitios con login propio: antes
+  daba error fatal al entrar, y el código no tenía dónde llegar porque el tema
+  rebota `wp-login.php`.
 
 ## Corrección de idiomas en 2.5.1 (2026-11-16)
 

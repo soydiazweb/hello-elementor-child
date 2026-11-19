@@ -3,8 +3,8 @@
 Contributors: solucionweb
 Requires at least: 5.9
 Tested up to: 6.5
-Stable tag: 2.6.0
-Version: 2.6.0
+Stable tag: 2.6.1
+Version: 2.6.1
 Requires PHP: 7.4
 License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -15,6 +15,7 @@ Tema hijo personalizado para Hello Elementor con login privado, reglas de acceso
 == Funcionalidades ==
 
 * Agente del Panel Kinsta incluido: reporta quién tiene acceso de administrador y permite activar la verificación en dos pasos por correo, desde Apariencia > Conexión al panel.
+* El reporte al panel se puede apagar, para los sitios que no están en ese servidor. Apagado, el resto del tema sigue funcionando igual.
 * Acceso privado en /panel/admin/.
 * Bloqueo de /wp-login.php y /wp-admin/ para usuarios anónimos.
 * Redirección de 404 a la URL de contacto/respaldo configurada.
@@ -27,6 +28,21 @@ Tema hijo personalizado para Hello Elementor con login privado, reglas de acceso
 * Seguridad antispam para formularios Elementor Pro: palabras spam, URLs fuera de campos enlace, fragmentos maliciosos e IPs bloqueadas.
 * Traducciones visuales administrables por pestañas de idioma.
 * Pantalla administrativa modernizada con textos de ayuda en español.
+
+== Conexión al panel ==
+
+El agente viene dentro del tema; no hay que instalar nada aparte. Su pantalla está en Apariencia > Conexión al panel, en cuatro pestañas:
+
+1. Conexión: dirección del panel, clave de registro e interruptor de reporte. Al registrar el sitio, el primer reporte sale en ese momento.
+2. Correo: comprueba que el sitio puede enviar correo. Hay que hacerlo antes de encender los dos pasos, o los administradores se quedan fuera.
+3. Dos pasos: pide un código por correo al entrar, además de la contraseña.
+4. Códigos de respaldo: para entrar si se pierde el acceso al correo.
+
+La casilla "Este sitio le reporta al Panel Kinsta" se apaga en los sitios que no están en ese servidor. Apagada, no sale el reporte diario ni se pregunta si hay algo pendiente, y se quitan los dos eventos programados. El código por correo al entrar y el silencio de los avisos automáticos de WordPress siguen funcionando.
+
+El reporte sale una vez al día, a las 05:00, con un desfase fijo que sale del propio dominio. El sitio nunca abre una puerta hacia afuera: es el sitio el que llama al panel.
+
+Si el plugin suelto "Agente Solución Web" sigue instalado, manda el plugin y el tema se aparta.
 
 == Opciones del tema ==
 
@@ -156,5 +172,9 @@ El tema incluye .gitignore y .distignore para evitar archivos basura de macOS, W
 
 No agregar lógica directamente en functions.php. Para nuevas funcionalidades, crear un módulo dentro de inc/. Los estilos deben ir en assets/css/, los scripts en assets/js/ y los recursos visuales en assets/img/.
 
+
+Cambios 2.6.1 (2026-11-19): Conexión al panel pasa a cuatro pestañas; nueva casilla para apagar el reporte al panel, que también quita sus eventos programados; al registrar un sitio el primer reporte sale en ese momento y no al día siguiente.
+
+Cambios 2.6.0 (2026-11-18): el agente del Panel Kinsta pasa a vivir dentro del tema (inc/agente.php e inc/agente/); se aparta si el plugin suelto sigue instalado; corregida la verificación en dos pasos en los sitios con login propio.
 
 Corrección 2.5.1 (2026-11-16): los ficheros .mo/.po de themes se nombran por locale (es_GT.mo), se completan traducciones de login y se agregan es/es_419.
