@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'HELLO_ELEMENTOR_CHILD_VERSION', '2.5.1' );
+define( 'HELLO_ELEMENTOR_CHILD_VERSION', '2.6.0' );
 define( 'HELLO_ELEMENTOR_CHILD_LOGIN_SLUG', 'panel/admin' );
 define( 'HELLO_ELEMENTOR_CHILD_REWRITE_VERSION', '20260516-1' );
 
@@ -27,3 +27,4 @@ require_once HELLO_ELEMENTOR_CHILD_PATH . 'inc/email-templates.php';
 require_once HELLO_ELEMENTOR_CHILD_PATH . 'inc/back-to-top.php';
 require_once HELLO_ELEMENTOR_CHILD_PATH . 'inc/whatsapp-button.php';
 require_once HELLO_ELEMENTOR_CHILD_PATH . 'inc/shortcodes.php';
+require_once HELLO_ELEMENTOR_CHILD_PATH . 'inc/agente.php';

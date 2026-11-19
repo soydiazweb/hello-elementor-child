@@ -3,17 +3,18 @@
 Contributors: solucionweb
 Requires at least: 5.9
 Tested up to: 6.5
-Stable tag: 2.4.4
-Version: 2.4.4
+Stable tag: 2.6.0
+Version: 2.6.0
 Requires PHP: 7.4
 License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Tags: elementor, child-theme, custom-login, translation-ready
 
-Tema hijo personalizado para Hello Elementor con login privado, reglas de acceso, botón Back to Top, botón flotante de WhatsApp, shortcodes básicos, seguridad antispam para formularios y opciones administrables desde Apariencia > Opciones del tema.
+Tema hijo personalizado para Hello Elementor con login privado, reglas de acceso, botón Back to Top, botón flotante de WhatsApp, shortcodes básicos, seguridad antispam para formularios, el agente del Panel Kinsta y opciones administrables desde Apariencia > Opciones del tema.
 
 == Funcionalidades ==
 
+* Agente del Panel Kinsta incluido: reporta quién tiene acceso de administrador y permite activar la verificación en dos pasos por correo, desde Apariencia > Conexión al panel.
 * Acceso privado en /panel/admin/.
 * Bloqueo de /wp-login.php y /wp-admin/ para usuarios anónimos.
 * Redirección de 404 a la URL de contacto/respaldo configurada.

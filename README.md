@@ -14,7 +14,8 @@ Tema hijo para **Hello Elementor** con utilidades pequeñas de presentación y a
 2. Sube el ZIP del tema hijo.
 3. Activa **Hello Elementor Child**.
 4. Entra a **Apariencia > Opciones del tema** y revisa textos, botones, colores, tamaños, URLs configurables y seguridad antispam de formularios.
-5. Ve a **Ajustes > Enlaces permanentes** y pulsa **Guardar cambios** si la ruta `/panel/admin/` no responde después de actualizar archivos.
+5. Entra a **Apariencia > Conexión al panel**, pon la dirección del panel y la clave de registro, y pulsa **Registrar este sitio**.
+6. Ve a **Ajustes > Enlaces permanentes** y pulsa **Guardar cambios** si la ruta `/panel/admin/` no responde después de actualizar archivos.
 
 ## Estructura
 
