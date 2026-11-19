@@ -63,7 +63,7 @@ if ( defined( 'SWA_VERSION' ) ) {
  * para saber de un vistazo qué sitios ya van con el agente dentro del tema y
  * cuáles siguen con el plugin.
  */
-define( 'SWA_VERSION', '0.6.2-tema' );
+define( 'SWA_VERSION', '0.6.3-tema' );
 define( 'SWA_RUTA', trailingslashit( get_stylesheet_directory() ) . 'inc/agente/' );
 
 require_once SWA_RUTA . 'class-ajustes.php';
