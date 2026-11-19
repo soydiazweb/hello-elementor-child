@@ -44,9 +44,15 @@ class SWA_Ordenes {
 		add_filter( 'cron_schedules', [ __CLASS__, 'intervalo' ] );
 		add_action( self::HOOK, [ __CLASS__, 'preguntar' ] );
 
-		// Además de en la activación. Ver programar(): en los sitios donde ya
-		// está instalado, la pregunta cada cinco minutos nunca quedó puesta.
-		self::programar();
+		// Con el panel apagado no se le pregunta nada, y se quita el reloj.
+		if ( ! SWA_Ajustes::obtener( 'panel_activo' ) ) {
+			self::desprogramar();
+		} else {
+			// Además de en la activación. Ver programar(): en los sitios donde
+			// ya está instalado, la pregunta cada cinco minutos nunca quedó
+			// puesta.
+			self::programar();
+		}
 
 		// La constante se define aquí y no en el ejecutor, porque hay que
 		// definirla en CADA carga de la página, no una sola vez.

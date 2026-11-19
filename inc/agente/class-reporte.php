@@ -24,6 +24,14 @@ class SWA_Reporte {
 	public static function init(): void {
 		add_action( self::HOOK, [ __CLASS__, 'enviar' ] );
 
+		// Con el panel apagado no se reporta nada, y se quita el reloj que
+		// hubiera quedado puesto de antes: un sitio que ya no habla con el
+		// panel no debe seguir llamándolo cada día.
+		if ( ! SWA_Ajustes::obtener( 'panel_activo' ) ) {
+			self::desprogramar();
+			return;
+		}
+
 		// Y se programa aquí además de al activar. Hace falta por dos cosas:
 		// porque una activación puede quedarse a medias, y porque dentro del
 		// tema hijo no hay gancho de activación ninguno. programar() ya
@@ -204,6 +212,18 @@ class SWA_Reporte {
 				'secreto' => (string) $datos['secreto'],
 			]
 		);
+
+		// Y el primer reporte sale ya, sin esperar al de las 05:00.
+		//
+		// Registrarse solo entregaba el token: hasta el día siguiente el panel
+		// tenía el sitio en su lista pero no sabía nada de él —ni quiénes son
+		// sus administradores, ni cómo cumple las normas—, y en la pantalla de
+		// Sitios ese sitio salía sin contacto. En el momento de conectar es
+		// justo cuando alguien está mirando.
+		//
+		// Si este envío falla, el registro NO se deshace: el sitio ya quedó
+		// dado de alta y el reporte de mañana lo pondrá al día.
+		self::enviar();
 
 		return true;
 	}

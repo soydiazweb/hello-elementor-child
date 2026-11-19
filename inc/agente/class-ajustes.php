@@ -9,6 +9,14 @@ class SWA_Ajustes {
 
 	public static function predeterminados(): array {
 		return [
+			// El reporte al panel se puede apagar. «La funcionalidad del panel
+			// de Kinsta debe poder activarse o desactivarse por si no fuese
+			// dicho servidor»: el tema se usa en sitios que no están en
+			// Kinsta, y ahí este agente no tiene a quién reportar. Apagado, el
+			// sitio no manda nada ni pregunta nada; lo demás del tema —el
+			// código por correo, el silencio de los avisos de WordPress—
+			// sigue funcionando igual.
+			'panel_activo'     => 1,
 			'panel_url'        => '',
 			'clave_registro'   => '',
 			'token'            => '',   // lo entrega el panel al registrarse

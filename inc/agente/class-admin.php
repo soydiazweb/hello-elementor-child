@@ -97,6 +97,31 @@ class SWA_Admin {
 		$a      = SWA_Ajustes::todos();
 		$correo = SWA_Correo::estado();
 		$puede  = SWA_Correo::puede_enviar();
+
+		// ── Pestañas ────────────────────────────────────────────────────────
+		//
+		// Eran cuatro bloques en una sola página larga. «Crear tabs
+		// independientes mejor para una mejor administración»: cada cosa se
+		// toca en un momento distinto —la conexión al instalar, el correo al
+		// comprobarlo, los dos pasos al encenderlos— y verlas las cuatro a la
+		// vez solo sirve para tener que buscar.
+		$pestanas = [
+			'conexion' => __( 'Conexión', 'hello-elementor-child' ),
+			'correo'   => __( 'Correo', 'hello-elementor-child' ),
+			'dospasos' => __( 'Dos pasos', 'hello-elementor-child' ),
+			'respaldo' => __( 'Códigos de respaldo', 'hello-elementor-child' ),
+		];
+
+		$tab = isset( $_GET['tab'] ) ? sanitize_key( (string) $_GET['tab'] ) : 'conexion';
+
+		if ( ! isset( $pestanas[ $tab ] ) ) {
+			$tab = 'conexion';
+		}
+
+		$url_tab = static fn( string $t ) => add_query_arg(
+			[ 'page' => 'hello-child-agente', 'tab' => $t ],
+			admin_url( 'themes.php' )
+		);
 		?>
 		<div class="wrap hello-child-options-wrap">
 			<h1><?php echo esc_html__( 'Conexión al panel', 'hello-elementor-child' ); ?></h1>
@@ -105,6 +130,15 @@ class SWA_Admin {
 			</p>
 
 			<?php self::estilos(); ?>
+
+			<h2 class="nav-tab-wrapper">
+				<?php foreach ( $pestanas as $clave => $nombre ) : ?>
+					<a class="nav-tab <?php echo $clave === $tab ? 'nav-tab-active' : ''; ?>"
+						href="<?php echo esc_url( $url_tab( $clave ) ); ?>"><?php
+						echo esc_html( $nombre );
+					?></a>
+				<?php endforeach; ?>
+			</h2>
 
 			<?php if ( ! empty( $_GET['swa_msg'] ) ) : ?>
 				<?php
@@ -123,16 +157,36 @@ class SWA_Admin {
 
 			<?php
 			// ── 1. La conexión ──────────────────────────────────────────────
+			if ( 'conexion' === $tab ) :
 			self::panel_abrir(
 				__( 'Conexión con el panel', 'hello-elementor-child' ),
 				__( 'La dirección del panel y la clave con la que este sitio se presenta la primera vez.', 'hello-elementor-child' )
 			);
 			?>
+				<?php if ( ! $a['panel_activo'] ) : ?>
+					<div class="notice notice-warning inline"><p>
+						<strong><?php echo esc_html__( 'El reporte al panel está apagado.', 'hello-elementor-child' ); ?></strong>
+						<?php echo esc_html__( 'Este sitio no le manda nada al panel ni le pregunta nada. El código por correo al entrar y el silencio de los avisos de WordPress siguen funcionando igual.', 'hello-elementor-child' ); ?>
+					</p></div>
+				<?php endif; ?>
+
 				<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 					<input type="hidden" name="action" value="swa_guardar">
+					<input type="hidden" name="seccion" value="conexion">
 					<?php wp_nonce_field( 'swa_guardar' ); ?>
 
 					<div class="hello-child-fields">
+						<?php self::campo_abrir( 'panel_activo', __( 'Reportar al panel', 'hello-elementor-child' ), 'check' ); ?>
+							<label>
+								<input type="checkbox" name="panel_activo" id="panel_activo" value="1"
+									<?php checked( (int) $a['panel_activo'], 1 ); ?>>
+								<?php echo esc_html__( 'Este sitio le reporta al Panel Kinsta', 'hello-elementor-child' ); ?>
+							</label>
+							<p class="description">
+								<?php echo esc_html__( 'Apagalo si este sitio no está en el servidor del panel: deja de mandar su reporte diario y de preguntar si hay algo pendiente. Lo demás del tema no cambia.', 'hello-elementor-child' ); ?>
+							</p>
+						<?php self::campo_cerrar(); ?>
+
 						<?php self::campo_abrir( 'panel_url', __( 'Dirección del panel', 'hello-elementor-child' ), 'url' ); ?>
 							<input type="url" class="hello-child-input" name="panel_url" id="panel_url"
 								value="<?php echo esc_attr( $a['panel_url'] ); ?>" placeholder="https://...">
@@ -184,8 +238,10 @@ class SWA_Admin {
 				</form>
 			<?php
 			self::panel_cerrar();
+			endif;
 
 			// ── 2. El correo ────────────────────────────────────────────────
+			if ( 'correo' === $tab ) :
 			self::panel_abrir(
 				__( 'El correo de este sitio', 'hello-elementor-child' ),
 				__( 'Antes de activar la verificación en dos pasos hay que comprobar que el sitio puede enviar correo. Si no puede, el código nunca llega y los administradores quedan afuera de su propio sitio.', 'hello-elementor-child' )
@@ -246,8 +302,10 @@ class SWA_Admin {
 				</div>
 				<?php
 			endif;
+			endif;
 
 			// ── 3. Dos pasos ────────────────────────────────────────────────
+			if ( 'dospasos' === $tab ) :
 			self::panel_abrir(
 				__( 'Verificación en dos pasos', 'hello-elementor-child' ),
 				__( 'Pide un código por correo al entrar, además de la contraseña.', 'hello-elementor-child' )
@@ -327,8 +385,10 @@ class SWA_Admin {
 				</form>
 			<?php
 			self::panel_cerrar();
+			endif;
 
 			// ── 4. Códigos de respaldo ──────────────────────────────────────
+			if ( 'respaldo' === $tab ) :
 			self::panel_abrir(
 				__( 'Códigos de respaldo', 'hello-elementor-child' ),
 				__( 'Sirven para entrar si te quedás sin acceso al correo.', 'hello-elementor-child' )
@@ -358,6 +418,7 @@ class SWA_Admin {
 				</div>
 			<?php
 			self::panel_cerrar();
+			endif;
 			?>
 		</div>
 		<?php
@@ -377,6 +438,13 @@ class SWA_Admin {
 		check_admin_referer( 'swa_guardar' );
 
 		$nuevos = [];
+
+		// La casilla solo llega cuando está marcada, así que el apagado se
+		// deduce de su ausencia — y solo en el formulario que la trae, para
+		// que guardar otra pestaña no la apague sin querer.
+		if ( isset( $_POST['seccion'] ) && 'conexion' === $_POST['seccion'] ) {
+			$nuevos['panel_activo'] = isset( $_POST['panel_activo'] ) ? 1 : 0;
+		}
 
 		if ( isset( $_POST['panel_url'] ) ) {
 			$nuevos['panel_url'] = esc_url_raw( wp_unslash( (string) $_POST['panel_url'] ) );
