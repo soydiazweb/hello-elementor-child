@@ -14,7 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * The source strings are intentionally written in English. Spanish and other
  * languages should be handled through .po/.mo files using the text domain
- * hello-elementor-child.
+ * hello-elementor-child. Within a child theme, the files MUST be named
+ * after the locale alone (for example es_GT.mo, not hello-elementor-child-es_GT.mo).
  *
  * @return void
  */

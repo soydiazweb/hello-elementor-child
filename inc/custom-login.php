@@ -432,12 +432,24 @@ function hello_elementor_child_render_custom_login_page() {
 				<p class="custom-login-help"><?php echo esc_html__( 'Create a new password for your account.', 'hello-elementor-child' ); ?></p>
 				<p>
 					<label for="pass1"><?php echo esc_html__( 'New password', 'hello-elementor-child' ); ?></label>
-					<input type="password" name="pass1" id="pass1" class="input password-input" value="" size="20" autocomplete="new-password" required>
+					<span class="password-field">
+						<input type="password" name="pass1" id="pass1" class="input password-input" value="" size="20" autocomplete="new-password" required>
+						<button type="button" class="password-toggle" data-target="pass1" aria-label="<?php echo esc_attr__( 'Show password', 'hello-elementor-child' ); ?>" aria-pressed="false">
+							<svg class="icon-eye" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+							<svg class="icon-eye-off" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" hidden><path d="M9.9 5.3A11.7 11.7 0 0 1 12 5c6.4 0 10 7 10 7a14 14 0 0 1-3.1 3.9"/><path d="M6.3 6.3C3.6 8.2 2 12 2 12s3.6 7 10 7a10.6 10.6 0 0 0 4.7-1.1"/><path d="M10 10a3 3 0 0 0 4 4"/><path d="M3 3l18 18"/></svg>
+						</button>
+					</span>
 				</p>
 
 				<p>
 					<label for="pass2"><?php echo esc_html__( 'Confirm password', 'hello-elementor-child' ); ?></label>
-					<input type="password" name="pass2" id="pass2" class="input password-input" value="" size="20" autocomplete="new-password" required>
+					<span class="password-field">
+						<input type="password" name="pass2" id="pass2" class="input password-input" value="" size="20" autocomplete="new-password" required>
+						<button type="button" class="password-toggle" data-target="pass2" aria-label="<?php echo esc_attr__( 'Show password', 'hello-elementor-child' ); ?>" aria-pressed="false">
+							<svg class="icon-eye" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+							<svg class="icon-eye-off" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" hidden><path d="M9.9 5.3A11.7 11.7 0 0 1 12 5c6.4 0 10 7 10 7a14 14 0 0 1-3.1 3.9"/><path d="M6.3 6.3C3.6 8.2 2 12 2 12s3.6 7 10 7a10.6 10.6 0 0 0 4.7-1.1"/><path d="M10 10a3 3 0 0 0 4 4"/><path d="M3 3l18 18"/></svg>
+						</button>
+					</span>
 				</p>
 
 				<?php wp_nonce_field( 'hello_child_custom_resetpass', 'hello_child_resetpass_nonce' ); ?>
@@ -460,7 +472,13 @@ function hello_elementor_child_render_custom_login_page() {
 
 				<p>
 					<label for="user_pass"><?php echo esc_html__( 'Password', 'hello-elementor-child' ); ?></label>
-					<input type="password" name="pwd" id="user_pass" class="input password-input" value="" size="20" autocomplete="current-password" spellcheck="false" required>
+					<span class="password-field">
+						<input type="password" name="pwd" id="user_pass" class="input password-input" value="" size="20" autocomplete="current-password" spellcheck="false" required>
+						<button type="button" class="password-toggle" data-target="user_pass" aria-label="<?php echo esc_attr__( 'Show password', 'hello-elementor-child' ); ?>" aria-pressed="false">
+							<svg class="icon-eye" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+							<svg class="icon-eye-off" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" hidden><path d="M9.9 5.3A11.7 11.7 0 0 1 12 5c6.4 0 10 7 10 7a14 14 0 0 1-3.1 3.9"/><path d="M6.3 6.3C3.6 8.2 2 12 2 12s3.6 7 10 7a10.6 10.6 0 0 0 4.7-1.1"/><path d="M10 10a3 3 0 0 0 4 4"/><path d="M3 3l18 18"/></svg>
+						</button>
+					</span>
 				</p>
 
 				<div class="custom-login-row">
@@ -495,6 +513,8 @@ function hello_elementor_child_render_custom_login_page() {
 				'i18n'     => [
 					'headingTitle'    => $login_title,
 					'headingSubtitle' => $login_subtitle,
+					'showPassword'    => __( 'Show password', 'hello-elementor-child' ),
+					'hidePassword'    => __( 'Hide password', 'hello-elementor-child' ),
 				],
 			]
 		); ?>;

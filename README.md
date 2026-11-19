@@ -13,7 +13,7 @@ Tema hijo para **Hello Elementor** con utilidades pequeñas de presentación y a
 1. En WordPress entra a **Apariencia > Temas > Añadir nuevo > Subir tema**.
 2. Sube el ZIP del tema hijo.
 3. Activa **Hello Elementor Child**.
-4. Entra a **Apariencia > Opciones del tema** y revisa textos, botones, colores, tamaños y URLs configurables.
+4. Entra a **Apariencia > Opciones del tema** y revisa textos, botones, colores, tamaños, URLs configurables y seguridad antispam de formularios.
 5. Ve a **Ajustes > Enlaces permanentes** y pulsa **Guardar cambios** si la ruta `/panel/admin/` no responde después de actualizar archivos.
 
 ## Estructura
@@ -42,6 +42,7 @@ hello-theme-child/
 │   ├── assets.php
 │   ├── back-to-top.php
 │   ├── custom-login.php
+│   ├── form-security.php
 │   ├── helpers.php
 │   ├── i18n.php
 │   ├── shortcodes.php
@@ -66,6 +67,8 @@ Desde ahí se administra:
 - **WhatsApp:** activación, número, tamaño, texto accesible y mensaje inicial.
 - **Shortcode `[back]`:** icono, texto y URL de respaldo.
 - **Shortcode `[powerby]`:** texto, URL, texto del enlace y apertura en nueva pestaña.
+- **Formularios `formsw`:** contenedor para activar etiquetas flotantes desde placeholder, validaciones básicas y textarea sin resize en los formularios internos.
+- **Seguridad antispam de formularios:** bloqueo de palabras spam, bloqueo de URLs fuera de campos enlace, bloqueo de fragmentos maliciosos e IPs bloqueadas.
 - **Login y redirecciones:** título, subtítulo, texto de regreso y URL de contacto/respaldo.
 - **Idiomas:** traducciones administrables por pestañas.
 
@@ -136,6 +139,76 @@ Ejemplos:
 [back text="Volver"]
 [back icon="‹" fallback="/contacto/"]
 ```
+
+## Formularios dentro de un contenedor con clase `formsw`
+
+Para activar las mejoras automáticas, agrega la clase CSS `formsw` a un contenedor padre. El tema buscará automáticamente cualquier `<form>` dentro de ese contenedor, aunque esté en varios niveles internos, y aplicará el efecto y las validaciones.
+
+Ejemplo base:
+
+```html
+<div class="formsw">
+  <!-- El form puede estar directamente aquí o dentro de otros divs/widgets -->
+  <div class="contenedor-interno">
+    <form>
+      <input type="text" name="nombre" placeholder="Nombre">
+      <input type="number" name="cantidad" placeholder="Cantidad">
+      <input type="tel" name="telefono" placeholder="Teléfono">
+      <textarea name="mensaje" placeholder="Mensaje"></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</div>
+```
+
+También sigue funcionando si colocas `formsw` directamente en el `<form>`, pero la forma recomendada es usarla en un `div` o contenedor padre.
+
+Qué hace automáticamente:
+
+- Convierte el `placeholder` de cada `input` y `textarea` en una etiqueta flotante dentro del campo.
+- Los `input type="text"` no permiten números.
+- Los `input type="number"` solo permiten números.
+- Los `textarea` quedan con `resize: none`.
+- Los teléfonos aceptan solo números, mínimo 8 y máximo 11 caracteres.
+
+Para campos especiales puedes usar estas clases o atributos:
+
+```html
+<input type="text" class="sw-only-text" placeholder="Nombre">
+<input type="text" class="sw-only-number" placeholder="Código numérico">
+<input type="text" class="sw-phone" placeholder="Teléfono">
+<input type="text" class="sw-allow-numbers" placeholder="Dirección con número">
+<input type="text" class="sw-no-validate" placeholder="Campo sin validación automática">
+```
+
+También puedes usar `data-sw-field`: `text`, `number` o `phone`.
+
+
+## Seguridad antispam de formularios
+
+El tema integra las funcionalidades del plugin **No URL Field** para que puedas usar solo el tema hijo.
+
+La configuración está en:
+
+```text
+Apariencia > Opciones del tema > Seguridad antispam de formularios
+```
+
+Funcionamiento:
+
+- Bloquea envíos de formularios de Elementor Pro cuando un campo contiene palabras o frases definidas como spam.
+- Bloquea URLs dentro de campos normales de texto, teléfono, email o textarea.
+- Permite URLs únicamente cuando el campo del formulario es de tipo enlace/URL.
+- Incluso en campos de enlace, bloquea protocolos o fragmentos sospechosos como `javascript:`, `data:`, acortadores o dominios agregados a la lista de fragmentos maliciosos.
+- Trae una lista inicial editable de IPs y rangos CIDR bloqueados, uno por línea.
+- Puede agregar automáticamente a la lista de IPs bloqueadas la IP que envía spam.
+
+Notas de uso:
+
+- Si un campo necesita aceptar un enlace, créalo como campo tipo URL/enlace en Elementor Pro.
+- Si un visitante legítimo queda bloqueado por una palabra demasiado general, elimina o ajusta esa palabra en la lista de palabras spam.
+- Las opciones antiguas del plugin `custom_form_keywords` e `ips_bloqueadas` se migran automáticamente al tema si existían en la base de datos.
+- La lista inicial se puede borrar, reemplazar o ampliar desde el administrador. Acepta IP exacta, por ejemplo `203.0.113.10`, y rango CIDR, por ejemplo `45.82.76.0/24`.
 
 ## Idiomas y traducciones administrables
 
@@ -210,3 +283,22 @@ Desktop.ini
 - Colocar JavaScript en `assets/js/`.
 - Mantener recursos visuales, como SVG o imágenes, en `assets/img/`.
 - Actualizar la versión en `functions.php`, `style.css` y `readme.txt` cuando haya cambios.
+
+## Corrección de idiomas en 2.5.1 (2026-11-16)
+
+- Corregidos los nombres de las traducciones del tema hijo: WordPress busca `languages/es_GT.mo`, `languages/es_ES.mo`, etc., **no** `languages/hello-elementor-child-es_GT.mo` dentro del tema.
+- Se incluyen los archivos `.po` editables y `.mo` compilados para los 17 locales regionales de español, además de `es` y `es_419`.
+- Completadas las traducciones de mostrar/ocultar contraseña, mensajes de correos y shortcodes.
+- Se mantiene el dominio `hello-elementor-child` para todas las llamadas `__()` y el registro del dominio en `after_setup_theme`.
+- Después de actualizar el tema, limpia la caché del sitio (y PHP OPcache si está activo) y abre nuevamente `/panel/admin/`. El sitio debe estar en un locale español en **Ajustes > Generales > Idioma del sitio**.
+
+## Cambios en 2.5.0 (2026-11-09)
+
+- Iconos de mostrar/ocultar contraseña renovados y consistentes en inicio de sesión y restablecimiento, con etiquetas accesibles traducibles.
+- Nueva plantilla HTML para los mensajes de texto plano enviados con `wp_mail` (notificaciones de nuevo usuario, cambios de cuenta, recuperación de contraseñas y otras notificaciones de WordPress).
+- El color de marca se obtiene de la paleta principal del kit activo de Elementor, luego de los ajustes de color del tema, y finalmente del color neutro del tema hijo. Los cambios de paleta se reflejan en nuevos mensajes automáticamente.
+- Enlaces a `wp-login.php` en notificaciones WordPress se convierten a la ruta personalizada `/panel/admin/` en los casos admitidos, preservando parámetros de recuperación.
+- Los correos que ya sean HTML se conservan, evitando sobrescribir las plantillas de WooCommerce u otros complementos.
+- Desactivar la plantilla global desde PHP: `add_filter( 'hello_elementor_child_enable_email_template', '__return_false' );`.
+
+> La plantilla modifica la presentación, no la infraestructura de entrega. Es recomendable configurar un proveedor SMTP/transaccional y probar la entrega real tras instalar el tema. La versión no modifica archivos del tema padre.

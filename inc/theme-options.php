@@ -10,6 +10,96 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Return the default spam keywords inherited from the old no_url_field plugin.
+ *
+ * @return string
+ */
+function hello_elementor_child_default_spam_keywords() {
+	return <<<'SWKEYWORDS'
+Viagra,discount,Cialis,pills,BestFarmSluth,% Off,Free,Congratulations,Ads,Please Read,Trading,Bitcoin,Spam,Sex,Porn,Support,Gratis,Oferta,Dinero fácil,¡Gane ahora!,Descuento,Promoción,¡No pierda esta oportunidad!,Urgente,¡Increíble!,100% garantizado,Sin riesgo,Aprobado por la FDA,¡Gana dinero desde casa!,Haz clic aquí,Elimina de la lista,¡Felicidades, eres el ganador!,Préstamo,¡No es un fraude!,Pérdida de peso,Aumenta tus ingresos,Trabajo desde casa,Sin inversión,Multi-nivel,Increíble oferta,Inversión segura,Herbalife,¡Libre!,Hazte rico rápido,Sorteo gratuito,¡Compra ahora!,Adelgaza,Estafa,Hola amigo,¡Oportunidad única!,Aumenta la libido,HGH (hormona del crecimiento humano),Solución milagrosa,Obtén efectivo,¡Hazte millonario hoy!,Ganancias extraordinarias,Nunca antes visto,¡Especialmente para ti!,No pierdas tiempo,¡Hazlo ya!,Increíble, pero cierto,¡Hazlo por menos!,Consulta gratis,Gratis por tiempo limitado,¡Aumenta tus ventas!,¡Tu crédito aprobado!,Secretos para el éxito,En casa y sin esfuerzo,¡Baja de peso rápidamente!,¡Desbloquea tu potencial!,¡Satisfacción garantizada!,¡No te lo puedes perder!,Hazte millonario en días,¡Hazlo por ti mismo!,¡Resultados instantáneos!,¡Incrementa tu virilidad!,¡Recibe dinero rápido!,¡Elimina deudas!,¡Hazlo como los profesionales!,¡Consigue seguidores ahora!,¡Oferta exclusiva!,¡Sin preguntas!,¡Duplica tus ingresos!,¡Deshazte del estrés!,¡Compra con descuento!,¡Hazlo legalmente!,¡Ingresos pasivos!,¡Lo último en tecnología!,¡Acceso gratuito!,¡Hazlo por menos dinero!,¡Hazlo por ti mismo!,¡Resultados asombrosos!,¡Obtén lo que mereces!,¡Vende más!,¡Hazlo fácil!,¡Invierte sabiamente!,¡Sin riesgos, solo beneficios!,¡Compra ahora y ahorra!,¡Gana en grande!,¡Mejora tu vida!,¡Hazlo rápido!,¡Especial de temporada!,¡Entra en acción!,¡Lo mejor para ti!,¡Disfruta ahora!,¡Descubre el secreto!,¡Hazlo sencillo!,¡Ahorra dinero!,¡Hazlo exitoso!,¡Última oportunidad!,¡Hazlo bien!,¡Consigue más clientes!,¡Gana hoy!,¡Empieza ahora!,¡Sé el primero en probar!,Offer,Easy money,Win now!,Discount,Promotion,Don't miss this opportunity!,Urgent,Amazing!,100% guaranteed,Risk-free,FDA approved,Make money from home!,Click here,Remove from the list,you're the winner!,Loan,Not a scam!,Weight loss,Increase your income,Work from home,No investment,Multi-level,Incredible offer,Safe investment,Herbalife,Free!,Get rich quick,Free giveaway,Buy now!,Slim down,Scam,Hello friend,Unique opportunity!,Boost libido,HGH (human growth hormone),Miracle solution,Get cash,Become a millionaire today!,Extraordinary earnings,Never seen before,Especially for you!,Don't waste time,Do it now!,Amazing but true,Do it for less!,Free consultation,Free for a limited time,Boost your sales!,Your credit approved!,Secrets to success,From home and effortless,Lose weight quickly!,Unlock your potential!,Satisfaction guaranteed!,Can't miss this!,Get rich in days,Do it yourself!,Instant results!,Increase your virility!,Receive fast money!,Eliminate debts!,Do it like the pros!,Get followers now!,Exclusive offer!,No questions!,Double your income!,Get rid of stress!,Buy at a discount!,Do it legally!,Passive income!,Latest in technology!,Free access!,Do it for less money!,Do it yourself!,Amazing results!,Get what you deserve!,Sell more!,Make it easy!,Invest wisely!,Risk-free,only benefits!,Buy now and save!,Win big!,Improve your life!,Do it fast!,Seasonal special!,Take action!,Best for you!,Enjoy now!,Discover the secret!,Keep it simple!,Save money!,Make it successful!,Last chance!,Do it right!,Get more customers!,Win today!,Start now!,Be the first to try!,bots
+SWKEYWORDS;
+}
+
+/**
+ * Return default URL/domain fragments considered suspicious inside URL fields.
+ *
+ * @return string
+ */
+function hello_elementor_child_default_url_blocklist() {
+	return <<<'SWURLS'
+javascript:,data:,vbscript:,file:,base64,<script,</script,onerror=,onload=,eval(,bit.ly,tinyurl.com,t.co,goo.gl,ow.ly,is.gd,cutt.ly,rebrand.ly,shorte.st,adf.ly
+SWURLS;
+}
+
+/**
+ * Return a starter IP/CIDR blocklist.
+ *
+ * This list is intentionally short and editable from the theme options.
+ * It includes examples from public abuse/attack feeds and can be removed,
+ * replaced, or expanded by the site administrator.
+ *
+ * @return string
+ */
+function hello_elementor_child_default_blocked_ips() {
+	return <<<'SWIPS'
+# Lista inicial editable. Acepta IPs individuales y rangos CIDR.
+# Fuente base recomendada para revisión periódica: FireHOL / DShield / Spamhaus.
+5.61.209.0/24
+5.226.140.0/24
+20.65.193.0/24
+20.65.194.0/24
+43.228.157.0/24
+45.33.41.0/24
+45.82.76.0/24
+45.142.154.0/24
+45.142.193.0/24
+45.148.10.0/24
+45.198.224.0/24
+45.205.1.0/24
+64.62.156.0/24
+64.62.197.0/24
+65.49.1.0/24
+65.49.20.0/24
+66.132.172.0/24
+66.132.186.0/24
+66.132.195.0/24
+66.132.224.0/24
+69.5.169.0/24
+71.6.232.0/24
+77.90.185.0/24
+79.124.40.0/24
+87.251.64.0/24
+91.92.42.0/24
+91.196.152.0/24
+91.224.92.0/24
+91.230.168.0/24
+91.231.89.0/24
+100.29.192.0/24
+138.226.239.0/24
+146.88.241.0/24
+147.185.132.0/24
+167.94.145.0/24
+167.94.146.0/24
+176.65.139.0/24
+176.65.148.0/24
+178.20.210.0/24
+185.136.15.0/24
+185.242.226.0/24
+193.163.125.0/24
+195.184.76.0/24
+198.235.24.0/24
+199.45.154.0/24
+204.76.203.0/24
+205.210.31.0/24
+216.25.89.0/24
+216.180.246.0/24
+1.2.212.162
+1.20.186.216
+1.20.187.130
+SWIPS;
+}
+
+/**
  * Return default configurable values for the child theme.
  *
  * @return array
@@ -39,6 +129,12 @@ function hello_elementor_child_default_options() {
 		'login_title'                => __( 'Panel de administración', 'hello-elementor-child' ),
 		'login_subtitle'             => __( 'Acceso privado y seguro', 'hello-elementor-child' ),
 		'login_back_text'            => __( 'Volver al sitio web', 'hello-elementor-child' ),
+		'form_security_enabled'      => '1',
+		'form_security_keywords'     => hello_elementor_child_default_spam_keywords(),
+		'form_security_block_urls'   => '1',
+		'form_security_url_blocklist'=> hello_elementor_child_default_url_blocklist(),
+		'form_security_auto_block_ips'=> '1',
+		'form_security_blocked_ips'  => hello_elementor_child_default_blocked_ips(),
 		'contact_url'                => '/contacto/',
 		'back_to_top_label_es'       => 'Volver arriba',
 		'back_to_top_label_en'       => 'Back to top',
@@ -276,6 +372,10 @@ function hello_elementor_child_sanitize_options( $input ) {
 		}
 	}
 
+	$output['form_security_keywords']      = isset( $input['form_security_keywords'] ) ? sanitize_textarea_field( wp_unslash( $input['form_security_keywords'] ) ) : $defaults['form_security_keywords'];
+	$output['form_security_url_blocklist'] = isset( $input['form_security_url_blocklist'] ) ? sanitize_textarea_field( wp_unslash( $input['form_security_url_blocklist'] ) ) : $defaults['form_security_url_blocklist'];
+	$output['form_security_blocked_ips']   = isset( $input['form_security_blocked_ips'] ) ? sanitize_textarea_field( wp_unslash( $input['form_security_blocked_ips'] ) ) : $defaults['form_security_blocked_ips'];
+
 	$output['back_to_top_enabled']        = ! empty( $input['back_to_top_enabled'] ) ? '1' : '0';
 	$output['back_to_top_size']           = isset( $input['back_to_top_size'] ) ? hello_elementor_child_sanitize_button_size( wp_unslash( $input['back_to_top_size'] ), 52 ) : $defaults['back_to_top_size'];
 	$output['back_to_top_bg_color']       = isset( $input['back_to_top_bg_color'] ) ? hello_elementor_child_sanitize_color_option( wp_unslash( $input['back_to_top_bg_color'] ), $defaults['back_to_top_bg_color'] ) : $defaults['back_to_top_bg_color'];
@@ -283,6 +383,9 @@ function hello_elementor_child_sanitize_options( $input ) {
 	$output['back_to_top_border_color']   = isset( $input['back_to_top_border_color'] ) ? hello_elementor_child_sanitize_color_option( wp_unslash( $input['back_to_top_border_color'] ), $defaults['back_to_top_border_color'] ) : $defaults['back_to_top_border_color'];
 	$output['back_to_top_hover_bg_color'] = isset( $input['back_to_top_hover_bg_color'] ) ? hello_elementor_child_sanitize_color_option( wp_unslash( $input['back_to_top_hover_bg_color'] ), $defaults['back_to_top_hover_bg_color'] ) : $defaults['back_to_top_hover_bg_color'];
 	$output['whatsapp_enabled']           = ! empty( $input['whatsapp_enabled'] ) ? '1' : '0';
+	$output['form_security_enabled']      = ! empty( $input['form_security_enabled'] ) ? '1' : '0';
+	$output['form_security_block_urls']   = ! empty( $input['form_security_block_urls'] ) ? '1' : '0';
+	$output['form_security_auto_block_ips']= ! empty( $input['form_security_auto_block_ips'] ) ? '1' : '0';
 	$output['whatsapp_size']              = isset( $input['whatsapp_size'] ) ? hello_elementor_child_sanitize_button_size( wp_unslash( $input['whatsapp_size'] ), 52 ) : $defaults['whatsapp_size'];
 	$output['whatsapp_number']            = isset( $input['whatsapp_number'] ) ? hello_elementor_child_sanitize_whatsapp_number( wp_unslash( $input['whatsapp_number'] ) ) : '';
 	$output['powerby_target_blank']       = ! empty( $input['powerby_target_blank'] ) ? '1' : '0';
@@ -366,6 +469,33 @@ function hello_elementor_child_options_field( $key, $label, $type = 'text', $hel
 					<span class="hello-child-unit"><?php echo esc_html__( 'px', 'hello-elementor-child' ); ?></span>
 				<?php endif; ?>
 			<?php endif; ?>
+			<?php if ( $help ) : ?>
+				<p class="hello-child-description"><?php echo esc_html( $help ); ?></p>
+			<?php endif; ?>
+		</div>
+	</div>
+	<?php
+}
+
+/**
+ * Print one textarea field for the options page.
+ *
+ * @param string $key   Option key.
+ * @param string $label Field label.
+ * @param string $help  Optional help text.
+ * @param int    $rows  Textarea rows.
+ *
+ * @return void
+ */
+function hello_elementor_child_options_textarea_field( $key, $label, $help = '', $rows = 8 ) {
+	$value = hello_elementor_child_get_option( $key, '' );
+	?>
+	<div class="hello-child-field hello-child-field--textarea">
+		<div class="hello-child-field__label">
+			<label for="hello-child-<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $label ); ?></label>
+		</div>
+		<div class="hello-child-field__control">
+			<textarea id="hello-child-<?php echo esc_attr( $key ); ?>" class="hello-child-input hello-child-textarea" name="hello_elementor_child_options[<?php echo esc_attr( $key ); ?>]" rows="<?php echo esc_attr( (string) absint( $rows ) ); ?>"><?php echo esc_textarea( $value ); ?></textarea>
 			<?php if ( $help ) : ?>
 				<p class="hello-child-description"><?php echo esc_html( $help ); ?></p>
 			<?php endif; ?>
@@ -499,6 +629,12 @@ function hello_elementor_child_print_options_styles() {
 			width: 66px;
 			padding: 3px !important;
 			min-height: 42px;
+		}
+		.hello-child-textarea {
+			width: min(100%, 780px);
+			min-height: 120px;
+			resize: vertical;
+			font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 		}
 		.hello-child-description {
 			margin: 8px 0 0;
@@ -718,6 +854,17 @@ function hello_elementor_child_render_options_page() {
 						<p><?php echo esc_html__( 'Ejemplos:', 'hello-elementor-child' ); ?> <code>[powerby text="fullcom"]</code> <code>[back text="Volver" fallback="/contacto/"]</code></p>
 					</div>
 					<div class="hello-child-help-card">
+						<h3><?php echo esc_html__( 'Formularios formsw', 'hello-elementor-child' ); ?></h3>
+						<p><?php echo esc_html__( 'Agrega la clase formsw a un div o contenedor padre. El tema buscará cualquier form dentro, aunque esté en varios niveles internos, y activará etiquetas flotantes desde el placeholder, bloqueo de números en campos de texto, bloqueo de letras en campos numéricos y textarea sin resize.', 'hello-elementor-child' ); ?></p>
+						<p><?php echo esc_html__( 'Usa type="tel" o data-sw-field="phone" para teléfono; el tema permitirá solo números, mínimo 8 y máximo 11 caracteres.', 'hello-elementor-child' ); ?></p>
+						<p><?php echo esc_html__( 'También funciona si formsw está directamente en el form. Clases opcionales: sw-only-text, sw-only-number, sw-phone, sw-allow-numbers y sw-no-validate.', 'hello-elementor-child' ); ?></p>
+					</div>
+					<div class="hello-child-help-card">
+						<h3><?php echo esc_html__( 'Seguridad antispam', 'hello-elementor-child' ); ?></h3>
+						<p><?php echo esc_html__( 'La validación antispam se ejecuta del lado del servidor para formularios de Elementor Pro: bloquea palabras spam, URLs en campos que no son de enlace y puede bloquear automáticamente la IP que envía spam.', 'hello-elementor-child' ); ?></p>
+						<p><?php echo esc_html__( 'Las palabras, fragmentos de URL e IPs bloqueadas se editan abajo en la sección Seguridad antispam de formularios.', 'hello-elementor-child' ); ?></p>
+					</div>
+					<div class="hello-child-help-card">
 						<h3><?php echo esc_html__( 'Traducciones administrables', 'hello-elementor-child' ); ?></h3>
 						<p><?php echo esc_html__( 'Los campos generales funcionan como respaldo. En la sección Idiomas puedes completar textos por idioma usando pestañas.', 'hello-elementor-child' ); ?></p>
 						<p><?php echo esc_html__( 'Si el sitio está en español, el tema intenta usar los textos de Español. Si un campo está vacío, usa el valor general.', 'hello-elementor-child' ); ?></p>
@@ -767,6 +914,28 @@ function hello_elementor_child_render_options_page() {
 						hello_elementor_child_options_field( 'whatsapp_size', __( 'Tamaño del botón', 'hello-elementor-child' ), 'number', __( 'Rango permitido: 36px a 96px. El botón siempre queda circular.', 'hello-elementor-child' ) );
 						hello_elementor_child_options_field( 'whatsapp_label', __( 'Texto accesible', 'hello-elementor-child' ), 'text', __( 'Este texto se usa para accesibilidad y lectores de pantalla.', 'hello-elementor-child' ) );
 						hello_elementor_child_options_field( 'whatsapp_message', __( 'Mensaje inicial', 'hello-elementor-child' ), 'text', __( 'Texto opcional que se precarga en WhatsApp. Puedes usar {site_name}.', 'hello-elementor-child' ) );
+						?>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="hello-child-panel">
+				<div class="hello-child-panel__header">
+					<div>
+						<h2><?php echo esc_html__( 'Seguridad antispam de formularios', 'hello-elementor-child' ); ?></h2>
+						<p><?php echo esc_html__( 'Integra las funciones del plugin No URL Field directamente en el tema. Aplica principalmente a formularios de Elementor Pro.', 'hello-elementor-child' ); ?></p>
+					</div>
+				</div>
+				<div class="hello-child-panel__body">
+					<div class="hello-child-fields">
+						<?php
+						hello_elementor_child_options_field( 'form_security_enabled', __( 'Activar validación antispam', 'hello-elementor-child' ), 'checkbox' );
+						hello_elementor_child_options_textarea_field( 'form_security_keywords', __( 'Palabras spam bloqueadas', 'hello-elementor-child' ), __( 'Una palabra o frase por coma o por línea. Si aparece dentro de cualquier campo del formulario, se bloquea el envío.', 'hello-elementor-child' ), 10 );
+						hello_elementor_child_options_field( 'form_security_block_urls', __( 'Bloquear URLs fuera de campos enlace', 'hello-elementor-child' ), 'checkbox' );
+						hello_elementor_child_options_textarea_field( 'form_security_url_blocklist', __( 'Fragmentos de URL maliciosa', 'hello-elementor-child' ), __( 'Se revisan incluso en campos tipo enlace. Úsalo para bloquear acortadores, protocolos peligrosos, dominios o fragmentos sospechosos.', 'hello-elementor-child' ), 5 );
+						hello_elementor_child_options_field( 'form_security_auto_block_ips', __( 'Auto-bloquear IPs con spam', 'hello-elementor-child' ), 'checkbox' );
+						hello_elementor_child_options_textarea_field( 'form_security_blocked_ips', __( 'IPs bloqueadas', 'hello-elementor-child' ), __( 'Una IP o rango CIDR por línea. Ejemplo: 203.0.113.10 o 45.82.76.0/24. Puedes borrar o editar la lista inicial; las IPs detectadas por spam se agregan automáticamente si la opción anterior está activa.', 'hello-elementor-child' ), 8 );
 						?>
 					</div>
 				</div>
@@ -849,3 +1018,29 @@ function hello_elementor_child_render_options_page() {
 	</div>
 	<?php
 }
+
+// Permitir SVG en WordPress
+function permitir_svg_uploads($mimes) {
+    $mimes['svg']  = 'image/svg+xml';
+    $mimes['svgz'] = 'image/svg+xml';
+    return $mimes;
+}
+add_filter('upload_mimes', 'permitir_svg_uploads');
+
+// Corregir validación de tipo de archivo SVG
+function corregir_tipo_svg($data, $file, $filename, $mimes) {
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+    if ($ext === 'svg') {
+        $data['ext']  = 'svg';
+        $data['type'] = 'image/svg+xml';
+    }
+
+    if ($ext === 'svgz') {
+        $data['ext']  = 'svgz';
+        $data['type'] = 'image/svg+xml';
+    }
+
+    return $data;
+}
+add_filter('wp_check_filetype_and_ext', 'corregir_tipo_svg', 10, 4);

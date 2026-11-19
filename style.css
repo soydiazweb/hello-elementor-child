@@ -1,15 +1,14 @@
 /*
 Theme Name: Hello Elementor Child
 Theme URI: https://www.solucionweb.com/
-Description: Tema hijo personalizado para Hello Elementor con login privado, reglas de acceso, botones flotantes configurables, WhatsApp y shortcodes básicos administrables.
+Description: Tema hijo personalizado para Hello Elementor con login privado, reglas de acceso, botones flotantes configurables, WhatsApp, shortcodes básicos administrables y seguridad antispam para formularios.
 Author: Solución Web
 Author URI: https://www.solucionweb.com/
 Template: hello-elementor
-Version: 2.4.0
+Version: 2.5.1
 Text Domain: hello-elementor-child
+Domain Path: /languages
 License: GNU General Public License v3 or later.
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Tags: custom-login, translation-ready, elementor, child-theme
 */
-
-/* Los estilos personalizados se cargan desde /assets/css/. */

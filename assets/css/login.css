@@ -189,6 +189,70 @@ body.login::before {
   outline: none;
 }
 
+.password-field {
+  position: relative;
+  display: block;
+  margin-top: 8px;
+}
+
+.login form .password-field .password-input {
+  display: block;
+  margin: 0;
+  padding-right: 50px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--login-muted);
+  cursor: pointer;
+  border-radius: 10px;
+  transition: color 150ms ease, background 150ms ease;
+}
+
+.password-toggle:hover {
+  color: var(--login-text);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.password-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--login-focus);
+}
+
+.password-toggle svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Explicitly hide SVGs: the HTML hidden attribute is not enough for SVG. */
+.password-toggle svg[hidden] {
+  display: none;
+}
+
+.login .password-input::-ms-reveal,
+.login .password-input::-ms-clear {
+  display: none;
+}
+
+.password-toggle .icon-eye,
+.password-toggle .icon-eye-off {
+  fill: none;
+  stroke: currentColor;
+}
+
 .custom-login-row {
   display: flex;
   align-items: center;

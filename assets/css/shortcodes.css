@@ -4,6 +4,7 @@
 
 .sw-powered-by {
 	display: inline-flex;
+	font-family: inherit;
 	align-items: center;
 	gap: 0.28rem;
 	font-size: 0.875rem;
@@ -12,10 +13,16 @@
 }
 
 .sw-powered-by__link {
+	font-family: inherit;
 	color: #374151;
 	font-weight: 500;
 	text-decoration: none;
 	transition: color 180ms ease, text-decoration-color 180ms ease;
+}
+
+.sw-powered-by *,
+.sw-back-button * {
+	font-family: inherit;
 }
 
 .sw-powered-by__link:hover,
@@ -26,6 +33,7 @@
 }
 
 .sw-back-button {
+	font-family: inherit;
 	appearance: none;
 	-webkit-appearance: none;
 	display: inline-flex;
@@ -66,4 +74,74 @@
 	justify-content: center;
 	font-size: 1.05em;
 	line-height: 1;
+}
+
+/**
+ * Forms with floating placeholders and basic validations.
+ * Add class "formsw" to a parent container; styles apply to any form inside it.
+ * If the class is placed directly on a form, it is supported too.
+ */
+.formsw .sw-floating-field {
+	position: relative;
+	display: block;
+	width: 100%;
+}
+
+.formsw textarea {
+	resize: none !important;
+}
+
+.formsw .sw-floating-field input,
+.formsw .sw-floating-field textarea {
+	width: 100%;
+	transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.formsw .sw-floating-field input {
+	padding-top: 1.15rem !important;
+	padding-bottom: 0.45rem !important;
+}
+
+.formsw .sw-floating-field textarea {
+	min-height: 118px;
+	padding-top: 1.45rem !important;
+	resize: none !important;
+}
+
+.formsw .sw-floating-label {
+	position: absolute;
+	z-index: 2;
+	left: 0.95rem;
+	top: 50%;
+	max-width: calc(100% - 1.9rem);
+	color: currentColor;
+	font-family: inherit;
+	font-size: 1em;
+	line-height: 1;
+	opacity: 0.62;
+	overflow: hidden;
+	pointer-events: none;
+	text-overflow: ellipsis;
+	transform: translateY(-50%);
+	transform-origin: left top;
+	transition: top 180ms ease, transform 180ms ease, font-size 180ms ease, opacity 180ms ease;
+	white-space: nowrap;
+}
+
+.formsw .sw-floating-field textarea + .sw-floating-label {
+	top: 1rem;
+	transform: translateY(0);
+}
+
+.formsw .sw-floating-field.is-focused .sw-floating-label,
+.formsw .sw-floating-field.has-value .sw-floating-label {
+	top: 0.46rem;
+	font-size: 0.72em;
+	opacity: 0.82;
+	transform: translateY(0);
+}
+
+.formsw .sw-floating-field.is-focused input,
+.formsw .sw-floating-field.is-focused textarea {
+	outline: none;
 }
